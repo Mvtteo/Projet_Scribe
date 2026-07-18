@@ -1,4 +1,5 @@
-const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+const rawApiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+const BASE_URL = /^https?:\/\//.test(rawApiUrl) ? rawApiUrl : `https://${rawApiUrl}`
 
 export async function uploadRecording(blob) {
   const body = new FormData()
